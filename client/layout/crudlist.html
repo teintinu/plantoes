@@ -1,0 +1,17 @@
+<template name="crudlist">
+	
+	<div class="list-group">
+		{{#each rows}}
+          <button type="button" class="list-group-item crudedit" data-_id="{{_id}}">
+			{{#if desc this}}
+			  {{desc this}}
+			{{else}}
+			  {{#each col this}}
+			  {{/each}}
+			{{/if}}  
+		  </button>
+		{{/each}}
+    </div>
+	
+	<button class='crudadd'> cadastrar </button>
+</template>
