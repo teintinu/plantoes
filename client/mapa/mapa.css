@@ -1,0 +1,36 @@
+.mapa {
+	width: 100%;
+	height: 100%;
+}
+
+.mapa td {
+	text-align: center;
+	padding: 2px
+}
+
+.mapacell :hover{
+  	background-color: #F0F0F0;
+}
+
+.mapacell a {
+	border: 0;
+	padding: 0;
+	width: 9em;
+	height: 100%;
+}
+
+.rodizio{
+	color: red
+}
+
+.emacompanhamento{
+	color: green
+}
+
+.vazio{
+	color: gray
+}
+
+.urgente{
+	background-color: red
+}

@@ -1,5 +1,6 @@
 <template name="mapa" >
-	<table class="mapa" border=1  cellpadding="10" cellspacing="0">
+	  
+	<table class="mapa" border=1  cellpadding="20" cellspacing="0">
 		<thead>
 			<tr>
 				<td colspan="9">{{titulo1}}</td>
@@ -20,42 +21,37 @@
 		</thead>
 		<tbody>
 			<!---->
-			{{#each plantoes}}
-			  {{#if ../use_b}}
-			  <tr>
-				<td rowspan="2">{{codigo}}</td>
-				<td rowspan="2">{{intervalo}}</td>
-				<td class="{{dom_a_class}}">{{dom_a}}</td>
-				<td class="{{seg_a_class}}">{{seg_a}}</td>
-				<td class="{{ter_a_class}}">{{ter_a}}</td>
-				<td class="{{qua_a_class}}">{{qua_a}}</td>
-				<td class="{{qui_a_class}}">{{qui_a}}</td>
-				<td class="{{sex_a_class}}">{{sex_a}}</td>
-				<td class="{{sab_a_class}}">{{sab_a}}</td>
-			  </tr>
-			  <tr>
-				<td class="{{dom_b_class}}">{{dom_b}}</td>
-				<td class="{{seg_b_class}}">{{seg_b}}</td>
-				<td class="{{ter_b_class}}">{{ter_b}}</td>
-				<td class="{{qua_b_class}}">{{qua_b}}</td>
-				<td class="{{qui_b_class}}">{{qui_b}}</td>
-				<td class="{{sex_b_class}}">{{sex_b}}</td>
-				<td class="{{sab_b_class}}">{{sab_b}}</td>
-			  </tr>
-			  {{else}}
-			  <tr>
-				<td>{{codigo}}</td>
-				<td>{{intervalo}}</td>
-				<td class="{{dom_a_class}}">{{dom_a}}</td>
-				<td class="{{seg_a_class}}">{{seg_a}}</td>
-				<td class="{{ter_a_class}}">{{ter_a}}</td>
-				<td class="{{qua_a_class}}">{{qua_a}}</td>
-				<td class="{{qui_a_class}}">{{qui_a}}</td>
-				<td class="{{sex_a_class}}">{{sex_a}}</td>
-				<td class="{{sab_a_class}}">{{sab_a}}</td>
-			  </tr>
-			  {{/if}}
-			{{/each}}
+			  {{#each linhas}}			  
+    		    {{> mapa_linha mapa}}				 
+			  {{/each}}
 		</tbody>
 	</table>
+    <button class="imprimir">Imprimir</button>
+	
+</template>
+
+<template name="mapa_linha">
+    <tr>
+	    {{#if primeira_linha}}
+		  <td rowspan="{{linha_span}}">{{codigo}}</td>
+		  <td rowspan="{{linha_span}}">{{intervalo}}</td>
+		{{/if}}
+		{{#each dias}}
+			<td class="mapacell {{classe}}"><a href="{{plantaolink}}">{{texto}}</a></td>
+		{{/each}}
+	</tr>
+</template>
+
+<template name="stat">
+	    <pre>
+    {{#with stats mapa}}
+	  Plantonistas: {{plantonistas}} / {{necessidade}}
+	  Plantoes cobertos: {{coberto}}
+	  Plantoes cobertos totalmente: {{coberto_total}}    
+	  Plantoes descobertos: {{descoberto}}
+	  Rodízios: {{rodizio}}
+	  Em acompanhamento: {{emacompanhamento}}
+	{{/with}}
+    </pre>
+
 </template>

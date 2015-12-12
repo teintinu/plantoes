@@ -1,4 +1,5 @@
 MENU.map({
-	'/': 'Mapa',
-	'/voluntario': 'Voluntário'
+	'/': "\u2302",
+	'/mg': 'Mapa',
+	'/voluntario': 'Voluntário',
 })

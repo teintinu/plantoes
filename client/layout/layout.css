@@ -1,0 +1,13 @@
+.header hr {
+	padding: 0px;
+	margin: 3px
+}
+
+#printmodal {
+    display: none;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+    top: 100px;
+}

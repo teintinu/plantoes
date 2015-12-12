@@ -1,26 +1,26 @@
-<body> 
-   {{> Layout }}
+<body>
+  {{> Layout }}
 </body>
 
 <template name="Layout">
-  <div class="page-header">
-    <h1>CVV - <small>{{content.title}}</small></h1>
-  </div>
-  
-  <ul class="nav nav-pills">
-    {{#each menu}}
-      <li role="presentation" class="{{menuclass rota}}"><a href="{{rota}}">{{title}}</a></li>
-    {{/each}}
-  </ul>
-  
-  <div class="container">
+  {{#if hideLayout}}
     {{> Template.dynamic template=content.template data=content}}
-  </div>
-</template>
+  {{else}}
+    <div class="header">
 
-<template name="Layoutx">
-  <div class="container">
-    {{> Template.dynamic template=content}}
-  </div>
-</template>
+      <ul class="nav nav-pills">
+        {{#each menu}}
+        <li role="presentation" class="{{menuclass rota}}"><a href="{{rota}}">{{title}}</a></li>
+        {{/each}}
+      </ul>
+      <hr/>
 
+    </div>  
+    <div class="container">
+      {{> Template.dynamic template=content.template data=content}}
+    </div>
+  {{/if}}
+  <div id="printmodal">
+    <iframe id="printframe"></iframe>  
+  </div>    
+</template>
